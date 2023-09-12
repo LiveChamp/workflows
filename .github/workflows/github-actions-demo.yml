@@ -53,6 +53,7 @@ jobs:
           distribution: 'temurin'
           java-version: '8'
 
+      # build jar package 
       - name: build with 'maven'
         run: 'mvn clean package' 
 
@@ -73,7 +74,7 @@ jobs:
         uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.HUAWEI_CN_REGISTRY_USERNAME }}
+          username: cn-east-3@${{ secrets.HUAWEI_CN_REGISTRY_USERNAME }}
           password: ${{ secrets.HUAWEI_CN_REGISTRY_PASSWORD }}
 
       # Extract metadata (tags, labels) for Docker
