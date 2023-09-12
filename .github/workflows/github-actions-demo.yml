@@ -78,7 +78,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/staging/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/staging/workflow
           tags: |
             type=sha
 
