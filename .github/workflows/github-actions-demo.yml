@@ -57,11 +57,6 @@ jobs:
       - name: build with 'maven'
         run: 'mvn clean package' 
 
-      # Instal QEMU for more platforms
-      # https://github.com/docker/setup-qemu-action
-      - name: Set Up QEMU
-        uses: docker/setup-qemu-action@v2
-
       #  Install docker buildx,用于构建多平台Docker镜像   
       #  https://github.com/docker/setup-buildx-action
       - name: Setup Docker buildx
