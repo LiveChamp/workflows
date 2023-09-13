@@ -66,7 +66,7 @@ jobs:
       # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: cn-east-3@${{ secrets.HUAWEI_CN_REGISTRY_USERNAME }}
@@ -79,14 +79,12 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/staging/workflow
-          tags: |
-            type=schedule,pattern={{date 'YYYYMMDD-hhmmss' tz='Asia/Shanghai'}}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
         id: build-and-push
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
