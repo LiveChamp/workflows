@@ -19,4 +19,3 @@ patches:
     version: v1
     kind: Deployment
     name: livechamp-patchdata-report
-  

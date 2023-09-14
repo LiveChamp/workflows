@@ -17,11 +17,9 @@ spec:
       containers:
         - name: livechamp-patchdata-report
           image: ImagesTemplate
-          env:
-            - name: JAVA_TOOL_OPTIONS
-              value: '-javaagent:/skywalking/agent/skywalking-agent.jar'
-            - name: SW_AGENT_NAME
-              value: livechamp-patchdata-report
+          envFrom:
+            - configMapRef:
+                name: env-configmap
           resources:
             limits:
               cpu: '1'
