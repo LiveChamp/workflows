@@ -1,0 +1,22 @@
+resources:
+- Deployment.yaml
+- svc.yaml
+
+#增加ns
+namespace: ns1
+
+#修改镜像
+images:
+- name: ImagesTemplate
+  newName: swr.cn-east-3.myhuaweicloud.com/livechamp-cn-v2/example
+  newTag: 1.1.0
+
+#针对deployment文件做对应修改
+patches:
+- path: patch-deployment.yaml
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: livechamp-patchdata-report
+  

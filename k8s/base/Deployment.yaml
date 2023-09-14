@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: livechamp-patchdata-report
+  labels:
+    app: livechamp-patchdata-report
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: livechamp-patchdata-report
+  template:
+    metadata:
+      labels:
+        app: livechamp-patchdata-report
+    spec:
+      containers:
+        - name: livechamp-patchdata-report
+          image: ImagesTemplate
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: '-javaagent:/skywalking/agent/skywalking-agent.jar'
+            - name: SW_AGENT_NAME
+              value: livechamp-patchdata-report
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: skywalking-agent
+              mountPath: /skywalking
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: default-secret
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
