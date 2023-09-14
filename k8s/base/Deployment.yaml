@@ -1,21 +1,21 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: livechamp-patchdata-report
+  name: workflows
   labels:
-    app: livechamp-patchdata-report
+    app: workflows
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: livechamp-patchdata-report
+      app: workflows
   template:
     metadata:
       labels:
-        app: livechamp-patchdata-report
+        app: workflows
     spec:
       containers:
-        - name: livechamp-patchdata-report
+        - name: workflows
           image: ImagesTemplate
           envFrom:
             - configMapRef:

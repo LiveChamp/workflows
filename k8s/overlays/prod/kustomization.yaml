@@ -9,13 +9,13 @@ patches:
     group: apps
     version: v1
     kind: Deployment
-    name: livechamp-patchdata-report
+    name: workflows
 
 #增加deployment的环境变量配置信息
 configMapGenerator:
 - name: env-configmap
   literals:
   - JAVA_TOOL_OPTIONS='-javaagent:/skywalking/agent/skywalking-agent.jar'
-  - SW_AGENT_NAME='livechamp-patchdata-report'
+  - SW_AGENT_NAME='workflows'
 
 

@@ -8,8 +8,8 @@ namespace: ns1
 #修改镜像
 images:
 - name: ImagesTemplate
-  newName: swr.cn-east-3.myhuaweicloud.com/livechamp-cn-v2/example
-  newTag: 1.1.0
+  newName: swr.cn-east-3.myhuaweicloud.com/livechamp-cn-v2/livechamp/workflows
+  newTag: sha-e4526e3
 
 #针对deployment文件做对应修改
 patches:
@@ -18,4 +18,4 @@ patches:
     group: apps
     version: v1
     kind: Deployment
-    name: livechamp-patchdata-report
+    name: workflows
