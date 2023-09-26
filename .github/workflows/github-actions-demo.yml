@@ -102,5 +102,7 @@ jobs:
           cd Deployment/base
           pwd
           kustomize edit set image ${{ steps.meta.outputs.tags}}
+          cat kustomizzation.yaml
+        
         
 
