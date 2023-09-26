@@ -5,11 +5,11 @@ resources:
 #增加ns
 namespace: ns1
 
-#修改镜像
-images:
-- name: ImagesTemplate
-  newName: swr.cn-east-3.myhuaweicloud.com/livechamp-cn-v2/livechamp/workflows
-  newTag: sha-e4526e3
+#修改镜像,在actions中使用kustomize命令进行修改
+#images:
+#- name: ImagesTemplate
+#  newName: swr.cn-east-3.myhuaweicloud.com/livechamp-cn-v2/livechamp/workflows
+#  newTag: sha-e4526e3
 
 #针对deployment文件做对应修改
 patches:
