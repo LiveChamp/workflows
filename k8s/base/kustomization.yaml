@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: swr.cn-east-3.myhuaweicloud.com/livechamp-cn-v2/livechamp/workflows
-  newTag: tag
+  newTag: sha-1f8b796
   
 resources:
 - Deployment.yaml
@@ -25,4 +25,3 @@ patches:
     kind: Deployment
     name: workflows
     version: v1
-
