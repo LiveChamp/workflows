@@ -1,0 +1,41 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: workflows
+  labels:
+    app: workflows
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: workflows
+  template:
+    metadata:
+      labels:
+        app: workflows
+    spec:
+      containers:
+        - name: workflows
+          image: ImagesTemplate
+          envFrom:
+            - configMapRef:
+                name: env-configmap
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          volumeMounts:
+            - name: skywalking-agent
+              mountPath: /skywalking
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: default-secret
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
