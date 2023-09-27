@@ -99,7 +99,7 @@ jobs:
       - name: UpdateImages
         run: |
           curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-          cd Deployment/base
+          cd k8s/base
           pwd
           kustomize edit set image ${{ steps.meta.outputs.tags}}
           cat kustomization.yaml
