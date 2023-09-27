@@ -103,6 +103,7 @@ jobs:
           pwd
           kustomize edit set image ${{ steps.meta.outputs.tags}}
           cat kustomization.yaml
+          rm -rf kustomize
 
       - name: commit change to repo
         uses: stefanzweifel/git-auto-commit-action@v4
